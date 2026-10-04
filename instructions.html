@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exam Instructions - Proctored Exam</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#1f2937}
+.header{background:#111827;color:white;padding:18px 32px;font-size:20px;font-weight:600}
+.container{max-width:850px;margin:40px auto;padding:0 20px}
+.card{background:white;border-radius:14px;padding:32px;box-shadow:0 8px 25px rgba(0,0,0,.07)}
+h1{margin-top:0;font-size:28px}
+.subtitle{color:#6b7280;margin-bottom:28px}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:30px}
+.info div{background:#f3f4f6;padding:16px;border-radius:10px}
+.info strong{display:block;font-size:20px;margin-bottom:5px}
+.info span{color:#6b7280;font-size:14px}
+h2{font-size:20px;margin-top:28px}
+li{margin:12px 0;line-height:1.5}
+.notice{background:#fff7ed;border:1px solid #fed7aa;padding:16px;border-radius:10px;margin-top:24px}
+.agree{display:flex;gap:10px;align-items:flex-start;margin-top:24px}
+.agree input{margin-top:4px}
+.actions{display:flex;justify-content:flex-end;margin-top:28px}
+button{border:0;border-radius:9px;padding:13px 22px;font-size:15px;font-weight:600;cursor:pointer;background:#2563eb;color:white}
+button:disabled{background:#9ca3af;cursor:not-allowed}
+@media(max-width:650px){.info{grid-template-columns:1fr}.card{padding:22px}.container{margin:20px auto}}
+</style>
+</head>
+<body>
+<div class="header">Proctored Exam</div>
+<div class="container">
+<div class="card">
+<h1>Exam Instructions</h1>
+<div class="subtitle">Please read the instructions carefully before starting.</div>
+<div class="info">
+<div><strong>60 min</strong><span>Duration</span></div>
+<div><strong>20</strong><span>Questions</span></div>
+<div><strong>Online</strong><span>Exam type</span></div>
+</div>
+<h2>Before you begin</h2>
+<ul>
+<li>Make sure your camera and microphone are working.</li>
+<li>Use a stable internet connection and keep your device connected to power if possible.</li>
+<li>Stay in a well-lit place and keep your face clearly visible to the camera.</li>
+<li>Do not leave the exam tab or switch to other applications during the exam.</li>
+</ul>
+<h2>Proctoring rules</h2>
+<ul>
+<li>Camera and microphone access are required for the proctored exam.</li>
+<li>The system may detect multiple people, mobile phones, unusual gaze, tab switching, and other restricted activity.</li>
+<li>Proctoring events are monitored during the exam. This prototype does not upload media recordings.</li>
+<li>Follow the exam rules and keep only the required materials with you.</li>
+</ul>
+<div class="notice"><strong>Important:</strong> Once the exam starts, the timer will begin. Make sure you are ready before continuing.</div>
+<label class="agree">
+<input type="checkbox" id="agree">
+<span>I have read and understood the instructions and agree to follow the exam rules.</span>
+</label>
+<div class="actions"><button id="startBtn" disabled>Start Exam</button></div>
+</div>
+</div>
+<script>
+if(localStorage.getItem("studentLoggedIn")!=="true") window.location.replace("login.html");
+const agree=document.getElementById("agree");
+const startBtn=document.getElementById("startBtn");
+agree.addEventListener("change",()=>{startBtn.disabled=!agree.checked});
+startBtn.addEventListener("click",()=>{if(agree.checked) window.location.href="Proctored_Exam_Advanced_v9.html"});
+</script>
+</body>
+</html>
